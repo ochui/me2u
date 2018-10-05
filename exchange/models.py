@@ -14,6 +14,7 @@ class Trade(models.Model):
     amount = models.DecimalField(_('amount'), max_digits=19, decimal_places=10)
     rate_per_coin = models.DecimalField(_('rate per coin'), max_digits=19, decimal_places=10)
     status = models.CharField(_('trade status'), max_length=8)
+    created_at = models.DateTimeField(_("created at"), auto_now_add=True)
     expires = models.DateTimeField(_('expires'))
 
     def __str__(self):
@@ -27,11 +28,11 @@ class Offer(models.Model):
     coin = models.ForeignKey('Coin', on_delete=models.CASCADE, null=False, blank=False)
     rate_per_coin = models.DecimalField(_('rate per coin'), max_digits=19, decimal_places=10)
     minimum_amount = models.DecimalField(_('minimum amount'), max_digits=19, decimal_places=10)
-    maximum_amount = models.DecimalField(_('maximum_amount'), max_digits=19, decimal_places=10)
+    maximum_amount = models.DecimalField(_('maximum amount'), max_digits=19, decimal_places=10)
     terms = models.TextField(_('terms'))
     instructions = models.TextField(_('instructions'))
-    created_at = models.DateTimeField(_('created'), auto_now_add=True)
-    updated_at = models.DateTimeField(_('updated'), auto_now=True)
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('updated at'), auto_now=True)
 
     def __str__(self):
         return _('%(coin)s at the rate of %(rate)s per coin') % {'coin':self.coin, 'rate':self.rate_per_coin}
