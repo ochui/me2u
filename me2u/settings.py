@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'exchange.apps.ExchangeConfig',
     'wallet.apps.WalletConfig',
+    'contact.apps.ContactConfig'
 ]
 
 MIDDLEWARE = [
