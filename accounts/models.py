@@ -9,7 +9,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from contact.models import Contact
-
+from django_countries.fields import CountryField
 
 class CustomUser(AbstractUser):
     
@@ -26,7 +26,7 @@ class CustomUser(AbstractUser):
     avatar = models.ImageField(_("avatar"), upload_to='avatars/%Y/%m/%d/', blank=True)
     gender = models.CharField(_("gender"), max_length=50, choices=GENDER)
     date_of_birth = models.DateField(_("date of birth"), blank=True, null=True)
-    country = models.CharField(_("country"), max_length=50)
+    country = CountryField(_('country'), blank_label=_('select country'))
     phone_number = models.CharField(_("phone number"), max_length=20, null=True, blank=True)
     phone_number_status = models.CharField(_("phone number status"), max_length=50, choices=PHONE_NUMBER_STATUS_CHOICES, default='0')
     following = models.ManyToManyField("self", verbose_name=_("following"), through=Contact, symmetrical=False, related_name='followers')

@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.twitter',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
+    #'allauth.socialaccount.providers.twitter',
+    #'allauth.socialaccount.providers.facebook',
+    #'allauth.socialaccount.providers.google',
+    'django_countries',
 
     # local apps
     'accounts.apps.AccountsConfig',
@@ -253,6 +254,19 @@ LOCALE_PATHS = (
 )
 
 SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
+
+ACCOUNT_FORMS = {
+'signup': 'accounts.forms.CustomSignupForm',
+}
+
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
 
 #Heroku
 django_heroku.settings(locals())
