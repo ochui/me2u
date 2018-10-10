@@ -1,0 +1,31 @@
+{% extends 'base/auth_base.html' %}
+{% load i18n %}
+{% load static %}
+{% load account socialaccount %}
+{% block content %}
+<div class="user-ath-box">
+    <h4>Login to Your Account</h4>
+    <form action="{% url 'account_login' %}" method="POST" class="user-ath-form">
+    {% if form.errors %}
+        <div class="note note-lg note-no-icon note-danger">
+            <p>{{ form.errors }}</p>
+        </div>
+    {% endif %}
+        {% csrf_token %}
+        <div class="input-item">{{ form.login }}</div>
+        <div class="input-item">{{ form.password }}</div>
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="gaps"></div>
+        <div class="d-flex justify-content-between align-items-center"><button class="btn btn-primary">{% trans "Log in" %}</button><a href="{% url 'account_reset_password' %}" class="simple-link">{% trans "Forgot password?" %} </a></div>
+    </form>
+    <div class="or-saparator"><span>{% trans "or" %}</span></div><span class="small-heading">{% trans "Log in with:" %}</span>
+    <ul class="btn-grp guttar-30px">
+        <li><a href="#" class="btn btn-sm btn-icon btn-facebook"><em class="fab fa-facebook-f"></em>Facebook</a></li>
+        <li><a href="#" class="btn btn-sm btn-icon btn-google"><em class="fab fa-google"></em>Google</a></li>
+    </ul>
+</div>
+<div class="gaps-2x"></div>
+<div class="form-note"> {% trans "Not a member?" %} <a href="{{ signup_url }}">{% trans "Sign up now" %}</a></div>
+{% endblock content %}

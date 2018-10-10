@@ -1,0 +1,43 @@
+{% extends 'base/auth_base.html' %}
+{% load i18n %}
+{% load static %}
+{% load account socialaccount %}
+{% block content %}
+<div class="user-ath-box">
+    <h4>{% trans "Creat New Account" %}</h4>
+    <form method="post" action="{% url 'account_signup' %}" class="user-ath-form">
+        {% if form.errors %}
+        <div class="note note-lg note-no-icon note-danger">
+            <p>{{ form.errors }}</p>
+        </div>
+        {% endif %}
+        
+        <!-- <div class="note note-lg note-no-icon note-success">
+            <p>Your registration is succesfull, please check you email to confirm.</p>
+        </div> -->
+        <div class="input-item">{{ form.email }}</div>
+        <div class="input-item">{{ form.country }}</div>
+        <div class="input-item">{{ form.password1 }}</div>
+        <div class="input-item">{{ form.password2 }}</div>
+        {% csrf_token %}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        {% blocktrans %}
+        <div class="input-item text-left"><input class="input-checkbox" id="term-condition" type="checkbox"><label for="term-condition">I
+        agree to <a href="#">Terms</a> and <a href="#"> Policy.</a></label></div>
+        {% endblocktrans %}
+        <div class="gaps"></div>
+        <div class="d-flex justify-content-between align-items-center"><button class="btn btn-primary">{% trans "Sign Up" %}</button></div>
+    </form>
+    <div class="or-saparator"><span>{% trans "or" %}</span></div><span class="small-heading">{% trans "Sign in with:" %}</span>
+    <ul class="btn-grp guttar-30px">
+        <li><a href="#" class="btn btn-sm btn-icon btn-facebook"><em class="fab fa-facebook-f"></em>Facebook</a></li>
+        <li><a href="#" class="btn btn-sm btn-icon btn-google"><em class="fab fa-google"></em>Google</a></li>
+    </ul>
+</div>
+<div class="gaps-2x"></div>
+{% blocktrans %}
+<div class="form-note">Already a member? <a href="{{ login_url }}">Login</a></div>
+{% endblocktrans %}
+{% endblock content %}

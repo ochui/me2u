@@ -69,7 +69,7 @@ ROOT_URLCONF = 'me2u.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -262,6 +262,8 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 
 ACCOUNT_FORMS = {
 'signup': 'accounts.forms.CustomSignupForm',
+'login': 'accounts.forms.CustomLoginForm',
+'reset_password': 'accounts.forms.CustomResetPasswordForm'
 }
 
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
