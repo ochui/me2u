@@ -1,0 +1,22 @@
+{% extends 'base/auth_base.html' %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+<div class="user-ath-box">
+    <h4>{% trans "Are you sure you want to sign out?" %}</h4>
+    <form action="{% url 'account_logout' %}" method="POST" class="user-ath-form">
+        {% csrf_token %}
+
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="gaps"></div>
+    </form>
+    <div class="or-saparator"><span></span></div><span class="small-heading"></span>
+    <ul class="btn-grp guttar-30px">
+        <li><button class="btn btn-sm btn-icon btn-primary">{% trans "sign out" %}</button></li>
+        <li><a href="#" class="btn btn-sm btn-icon btn-info" onclick="window.history.go(-1); return false;">{% trans "Return back" %}</a></li>
+    </ul>
+</div>
+<div class="gaps-2x"></div>
+{% endblock content %}

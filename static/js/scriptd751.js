@@ -1,1 +1,198 @@
-!function(a){"use strict";var e=a(window),i=a("body");a(".navbar");function l(){return e.width()}"ontouchstart"in document.documentElement||i.addClass("no-touch");var t=l();e.on("resize",function(){t=l()});var s=a(".is-sticky");if(s.length>0){var n=a("#mainnav").offset();e.scroll(function(){var a=e.scrollTop();e.width()>991&&a>n.top?s.hasClass("has-fixed")||s.addClass("has-fixed"):s.hasClass("has-fixed")&&s.removeClass("has-fixed")})}var r=window.location.href,d=r.split("#"),o=a("a");o.length>0&&o.each(function(){r===this.href&&""!==d[1]&&a(this).closest("li").addClass("active").parent().closest("li").addClass("active")});var m=a(".input-select, select");function c(a,e,i,l){var t=a,s=e,n=i,r=l;t.on("click",function(){return s.toggleClass("active"),t.toggleClass("active"),n.hasClass("active")&&n.removeClass("active"),r.hasClass("active")&&r.removeClass("active"),!1})}m.length>0&&m.each(function(){a(this).select2()});var h=a(".toggle-action"),p=a(".topbar-action"),g=a(".toggle-nav"),v=a(".user-sidebar"),f=a(".user-sidebar-overlay");h.length>0&&c(h,p,v,g),g.length>0&&c(g,v,p,h),f.length>0&&f.on("click",function(){v.removeClass("active"),g.removeClass("active")}),t<991?v.delay(500).addClass("user-sidebar-mobile"):v.delay(500).removeClass("user-sidebar-mobile"),e.on("resize",function(){t<991?v.delay(500).addClass("user-sidebar-mobile"):v.delay(500).removeClass("user-sidebar-mobile")});var u=a(".token-countdown-clock");u.length>0&&u.each(function(){var e=a(this),i=e.attr("data-date");e.countdown(i).on("update.countdown",function(e){a(this).html(e.strftime('<div class="col"><span class="countdown-time countdown-time-first">%D</span><span class="countdown-text">Days</span></div><div class="col"><span class="countdown-time">%H</span><span class="countdown-text">Hours</span></div><div class="col"><span class="countdown-time countdown-time-last">%M</span><span class="countdown-text">Minutes</span></div>'))})});var x=a(".tranx-table");if(x.length>0){var b=x.DataTable({ordering:!1,autoWidth:!1,dom:'<"row"<"col-10 text-left"f><"col-2 text-right"<"data-table-filter dropdown">>><"row"<"col-12"<"overflow-x-auto"t>>><"row"<"col-sm-6 text-left"p><"col-sm-6 text-sm-right"i>>',pageLength:7,bPaginate:a(".data-table tbody tr").length>7,iDisplayLength:7,language:{search:"",searchPlaceholder:"Type in to Search",info:"_START_ -_END_ of _TOTAL_",infoEmpty:"No records",infoFiltered:"( Total _MAX_  )",paginate:{first:"First",last:"Last",next:"Next",previous:"Prev"}}});a(".data-table-filter").append('<a href="#" data-toggle="dropdown"><em class="ti ti-settings"></em></a><ul class="dropdown-menu dropdown-menu-right"><li><input class="data-filter data-filter-approved" type="radio" name="filter" id="all" checked value=""><label for="all">All</label></li><li><input class="data-filter data-filter-approved" type="radio" name="filter" id="approved" value="approved"><label for="approved">Approved</label></li><li><input class="data-filter data-filter-pending" type="radio" name="filter" value="pending" id="pending"><label for="pending">Pending</label></li><li><input class="data-filter data-filter-cancled" type="radio" name="filter" value="cancled" id="cancled"><label for="cancled">Cancled</label></li></ul>'),a(".data-filter").on("change",function(){var e=a(this).val();b.columns(".tranx-status").search(e||"",!0,!1).draw()})}var k=a(".activity-table");k.length>0&&(k.DataTable({ordering:!1,autoWidth:!1,dom:'<"row"<"col-12"<"overflow-x-auto"t>>><"row align-items-center"<"col-sm-6 text-left"p><"col-sm-6 text-sm-right text-center"<"clear-table">>>',pageLength:7,bPaginate:a(".data-table tbody tr").length>7,iDisplayLength:7,language:{info:"_START_ -_END_ of _TOTAL_",infoEmpty:"No records",infoFiltered:"( Total _MAX_  )",paginate:{first:"First",last:"Last",next:"Next",previous:"Prev"}}}),a(".clear-table").append('<a href="#" class="btn btn-primary btn-xs clear-activity">Clear Activity</a>'));var w=a(".refferal-table");w.length>0&&w.DataTable({ordering:!1,autoWidth:!1,dom:'<"row"<"col-12"<"overflow-x-auto"t>>><"row align-items-center"<"col-sm-6 text-left"p><"col-sm-6 text-sm-right text-center"i>>',pageLength:5,bPaginate:a(".data-table tbody tr").length>5,iDisplayLength:5,language:{info:"_START_ -_END_ of _TOTAL_",infoEmpty:"No records",infoFiltered:"( Total _MAX_  )",paginate:{first:"First",last:"Last",next:"Next",previous:"Prev"}}});var y=a(".payment-check"),A=a(".payment-btn");y.length>0&&y.on("change",function(){var e="#"+a(this).val();A.attr("data-target",e)});var P=a('[data-toggle="tooltip"]');P.length>0&&P.tooltip();var L=a(".date-picker");L.length>0&&L.each(function(){L.datepicker({format:"mm/dd/yyyy",autoclose:!0,todayHighlight:!0,startView:"0",minViewMode:"0"}).datepicker("update",new Date)});var z="../ico/images/",D="RTL Mode",C="./rtl/index.html",T="../ico/",S="../ico-user/";i.hasClass("is-rtl")&&(z="../../ico/images/",D="LTR Mode",C="../index.html"),i.append('<div class="demo-panel"><div class="demo-list"> <a class="demo-themes" title="See All Demo" href="javascript:void(0)"> <img src="'+z+'demo-icon.png" /> </a> <a class="demo-mode" href="'+C+'">'+D+'</a> <a class="demo-cart" target="_blank" href="http://bit.ly/2uPFhHX"> <i class="fa fa-shopping-cart"> </i> </a> <a class="demo-wp" target="_blank" href="http://bit.ly/2JnGx8h"> <i class="fab fa-wordpress"> </i> <span>WP</span> </a> <a class="demo-toggle" href="javascript:void(0)"> <i class="fas fa-cogs"> </i> </a></div><div class="demo-content"><ul class="color-list"><li> <a href="#" class="color-trigger theme-defalt" title="theme"></a></li><li> <a href="#" class="color-trigger theme-blue" title="theme-blue"></a></li><li> <a href="#" class="color-trigger theme-mint" title="theme-mint"></a></li><li> <a href="#" class="color-trigger theme-orange" title="theme-orange"></a></li><li> <a href="#" class="color-trigger theme-royal" title="theme-royal"></a></li><li> <a href="#" class="color-trigger theme-ruby" title="theme-ruby"></a></li><li> <a href="#" class="color-trigger theme-java" title="theme-java"></a></li></ul></div></div><div class="demo-theme-content"><div class="demo-theme-content-bg"></div> <a class="demo-close" href="javascript:void(0)">&times;</a><div class="demo-theme-wrapper"><div class="demo-theme-all"><div class="row no-gutters"><div class="col-lg-9"><div class="demo-left-promo"><div class="row"><div class="col-md-6"> <a href="http://bit.ly/2uPFhHX" class="demo-offer-image text-center"> <img src="http://cdn.themenio.com/offers/ico-site-offer-html.gif" alt="offer" /> </a></div><div class="col-md-6 d-none d-md-block"> <a href="http://bit.ly/2GrTLis" class="demo-offer-image text-center"> <img src="http://cdn.themenio.com/offers/ico-site-offer-other.gif" alt="offer" /> </a></div></div></div></div><div class="col-lg-3"><div class="demo-right-promo demo-color-bg"></div></div></div><div class="row no-gutters"><div class="col-lg-9"><div class="demo-left"><div class="row"><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-1"><div class="demo-image"> <a href="'+T+'index-zinnia-particle-animate.html"> <img src="'+z+'demo-zinnia.jpg" alt="alt"> </a> <span class="demo-new-badge demo-pink-badge">v1.4.1 New</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-zinnia-particle-animate.html"><h5>Landing V12 <span>Zinnia</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-zinnia.html">Default</a></li><li> <a href="'+T+'index-zinnia-animate.html">Animated</a></li><li> <a href="'+T+'index-zinnia-particle.html">Particle</a></li><li> <a href="'+T+'index-zinnia-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-2"><div class="demo-image"> <a href="'+T+'index-salvia-particle-animate.html"> <img src="'+z+'demo-salvia.jpg" alt="alt"> </a> <span class="demo-new-badge demo-hot-badge">v1.4 New</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-salvia-particle-animate.html"><h5>Landing V11 <span>Salvia</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-salvia.html">Default</a></li><li> <a href="'+T+'index-salvia-animate.html">Animated</a></li><li> <a href="'+T+'index-salvia-particle.html">Particle</a></li><li> <a href="'+T+'index-salvia-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-3"><div class="demo-image"> <a href="'+T+'index-lungwort-particle-animate.html"> <img src="'+z+'demo-lungwort.jpg" alt="alt"> </a> <span class="demo-new-badge">v1.3</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-lungwort-particle-animate.html"><h5>Landing V10 <span>Lungwort</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-lungwort.html">Default</a></li><li> <a href="'+T+'index-lungwort-animate.html">Animated</a></li><li> <a href="'+T+'index-lungwort-particle.html">Particle</a></li><li> <a href="'+T+'index-lungwort-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-4"><div class="demo-image"> <a href="'+T+'index-jasmine-particle-animate.html"> <img src="'+z+'demo-jasmine.jpg" alt="alt"> </a> <span class="demo-new-badge">v1.3</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-jasmine-particle-animate.html"><h5>Landing V9 <span>Jasmine</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-jasmine.html">Default</a></li><li> <a href="'+T+'index-jasmine-animate.html">Animated</a></li><li> <a href="'+T+'index-jasmine-particle.html">Particle</a></li><li> <a href="'+T+'index-jasmine-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-5"><div class="demo-image"> <a href="'+T+'index-lobelia-particle-animate.html"> <img src="'+z+'demo-lobelia.jpg" alt="alt"> </a> <span class="demo-new-badge">v1.2.3</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-lobelia-particle-animate.html"><h5>Landing V8 <span>Lobelia Dark</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-lobelia.html">Default</a></li><li> <a href="'+T+'index-lobelia-animate.html">Animated</a></li><li> <a href="'+T+'index-lobelia-particle.html">Particle</a></li><li> <a href="'+T+'index-lobelia-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-6"><div class="demo-image"> <a href="'+T+'index-muscari-particle-animate.html"> <img src="'+z+'demo-muscari.jpg" alt="alt"> </a> <span class="demo-new-badge">v1.2.1</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-muscari-particle-animate.html"><h5>Landing V7 <span>Muscari Light</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-muscari.html">Default</a></li><li> <a href="'+T+'index-muscari-animate.html">Animated</a></li><li> <a href="'+T+'index-muscari-particle.html">Particle</a></li><li> <a href="'+T+'index-muscari-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-7"><div class="demo-image"> <a href="'+T+'index-lavender-particle-animate.html"> <img src="'+z+'demo-lavender.jpg" alt="alt"> </a> <span class="demo-new-badge">v1.2</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-lavender-particle-animate.html"><h5>Landing V6 <span>Lavender Light</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-lavender.html">Default</a></li><li> <a href="'+T+'index-lavender-animate.html">Animated</a></li><li> <a href="'+T+'index-lavender-particle.html">Particle</a></li><li> <a href="'+T+'index-lavender-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-8"><div class="demo-image"> <a href="'+T+'index-azure-light-pro-tokensales.html"> <img src="'+z+'demo-azure-pro.jpg" alt="alt"> </a> <span class="demo-new-badge">v1.1</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-azure-light-pro-tokensales.html"><h5>Landing V5 <span>Azure Light Pro</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-azure-light-pro.html">Default</a></li><li> <a href="'+T+'index-azure-light-pro-animate.html">Animated</a></li><li> <a href="'+T+'index-azure-light-pro-particle.html">Particle</a></li><li> <a href="'+T+'index-azure-light-pro-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-9"><div class="demo-image"> <a href="'+T+'index-azure-particle-animate.html"> <img src="'+z+'demo-azure.jpg" alt="alt"> </a> <span class="demo-new-badge">v1.1</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-azure-particle-animate.html"><h5>Landing V4 <span>Default Azure</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-azure.html">Default</a></li><li> <a href="'+T+'index-azure-animate.html">Animated</a></li><li> <a href="'+T+'index-azure-particle.html">Particle</a></li><li> <a href="'+T+'index-azure-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-10"><div class="demo-image"> <a href="'+T+'index-dark-pro-particle-animate.html"> <img src="'+z+'demo-dark-pro.jpg" alt="alt"> </a> <span class="demo-new-badge">v1.1</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-dark-pro-tokensales.html"><h5>Landing V3 <span>Default Dark Pro</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-dark-pro.html">Default</a></li><li> <a href="'+T+'index-dark-pro-animate.html">Animated</a></li><li> <a href="'+T+'index-dark-pro-particle.html">Particle</a></li><li> <a href="'+T+'index-dark-pro-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-10"><div class="demo-image"> <a href="'+T+'index-light-tokensales.html"> <img src="'+z+'demo-pro.jpg" alt="alt"> </a> <span class="demo-new-badge">v1.0</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-light-tokensales.html"><h5>Landing V2 <span>Default Light</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-light.html">Default</a></li><li> <a href="'+T+'index-light-animate.html">Animated</a></li><li> <a href="'+T+'index-light-particle.html">Particle</a></li><li> <a href="'+T+'index-light-particle-animate.html">Particle - Ani</a></li></ul></div></div></div><div class="col-lg-4 col-sm-6"><div class="demo-theme-item demo-theme-item-10"><div class="demo-image"> <a href="'+T+'index-dark-particle-animate.html"> <img src="'+z+'demo-dark.jpg" alt="alt"> </a> <span class="demo-new-badge">v1.0</span></div><div class="demo-text"> <a class="demo-title" href="'+T+'index-dark-particle-animate.html"><h5>Landing V1 <span>Default Dark</span></h5> </a><ul class="demo-item-list"><li> <a href="'+T+'index-dark.html">Default</a></li><li> <a href="'+T+'index-dark-animate.html">Animated</a></li><li> <a href="'+T+'index-dark-particle.html">Particle</a></li><li> <a href="'+T+'index-dark-particle-animate.html">Particle - Ani</a></li></ul></div></div></div></div></div></div><div class="col-lg-3"><div class="demo-right demo-color-bg"><div class="row"><div class="col-lg-12 col-md-6"><div class="demo-theme-item"><div class="demo-image"> <a href="'+S+'index.html"> <img src="'+z+'demo-user.jpg" alt="alt"> </a> <span class="demo-new-badge demo-pink-badge">v1.3</span> <span class="demo-free-badge">Free</span></div><div class="demo-text"> <a class="demo-title" href="'+S+'index.html"><h5>User Center</h5> </a><ul class="demo-item-list"><li> <a href="'+S+'index.html">DashBoard</a></li><li> <a href="'+S+'account.html">Accounts</a></li><li> <a href="'+S+'tokens.html">Contributions</a></li><li> <a href="'+S+'transactions.html">Transactions</a></li><li> <a href="'+S+'kyc.html">KYC Default</a></li><li> <a href="'+S+'kyc-application.html">KYC Application</a></li><li> <a href="'+S+'kyc-status.html">KYC Status</a></li><li> <a href="'+S+'activity.html">Activity</a></li><li> <a href="'+S+'referrals.html">Referrals</a></li><li> <a href="'+S+'security.html">Security</a></li><li> <a href="'+S+'signup.html">Signup</a></li><li> <a href="'+S+'signup-success.html">Signup Success</a></li><li> <a href="'+S+'login.html">Login</a></li><li> <a href="'+S+'recovery.html">Recovery</a></li><li> <a href="'+S+'email-confirm.html">Email Confirm</a></li><li> <a href="'+S+'faq.html">FAQ Page</a></li><li> <a href="'+S+'how-to.html">How To Page</a></li><li> <a href="'+S+'policy.html">Privacy Policy</a></li></ul></div></div><div class="demo-sap"></div></div><div class="col-lg-12 col-md-6"><div class="demo-extra-page-list"><h5>Extra Pages</h5><ul class="demo-extra-item-list"><li> <a href="'+T+'login-dark.html">Login <span>Dark</span> </a></li><li> <a href="'+T+'login-light.html">Login <span>Light</span> </a></li><li> <a href="'+T+'signup-dark.html">Sign Up <span>Dark</span> </a></li><li> <a href="'+T+'signup-light.html">Sign Up <span>Light</span> </a></li><li> <a href="'+T+'signup-azure.html">Sign Up <span>Azure</span> </a></li><li> <a href="'+T+'signup-lavender.html">Sign Up <span>Lavender</span> </a></li><li> <a href="'+T+'signup-muscari.html">Sign Up <span>Muscari</span> </a></li><li> <a href="'+T+'signup-lobelia.html">Sign Up <span>Lobelia</span> </a></li><li> <a href="'+T+'404-dark.html">404 <span>Dark</span> </a></li><li> <a href="'+T+'404-light.html">404 <span>Light</span> </a></li><li> <a href="'+T+'404-azure.html">404 <span>Azure</span> </a></li><li></li><li> <a href="'+T+'index-light-tokensales.html">Token Sales <span>Light</span> </a></li><li> <a href="'+T+'index-dark-pro-tokensales.html">Token Sales <span>Dark Pro</span> </a></li><li> <a href="'+T+'index-azure-tokensales.html">Token Sales <span>Azure</span> </a></li><li> <a href="'+T+'index-azure-light-pro-tokensales.html">Token Sales <span>Azure Pro</span> </a></li><li> <a href="'+T+'index-dark-tokensales.html">Token Sales <span>Dark</span> </a></li><li></li><li> <a href="'+T+'blog-archive-dark.html">Blog Archive <span>Dark</span> </a></li><li> <a href="'+T+'blog-archive-light.html">Blog Archive <span>Light</span> </a></li><li> <a href="'+T+'blog-archive-dark-pro.html">Blog Archive <span>Dark Pro</span> </a></li><li> <a href="'+T+'blog-archive-azure.html">Blog Archive <span>Azure</span> </a></li><li> <a href="'+T+'blog-archive-azure-light-pro.html">Blog Archive <span>Azure Pro</span> </a></li><li></li><li> <a href="'+T+'blog-single-dark.html">Blog Single <span>Dark</span> </a></li><li> <a href="'+T+'blog-single-light.html">Blog Single <span>Light</span> </a></li><li> <a href="'+T+'blog-single-dark-pro.html">Blog Single <span>Dark Pro</span> </a></li><li> <a href="'+T+'blog-single-azure.html">Blog Single <span>Azure</span> </a></li><li> <a href="'+T+'blog-single-azure-light-pro.html">Blog Single <span>Azure Pro</span> </a></li></ul></div></div></div></div></div></div></div></div></div>'),a(".demo-themes,.demo-close").on("click",function(){a(".demo-theme-content").toggleClass("active"),a("html").toggleClass("demo-on")}),a(".demo-toggle").on("click",function(){a(".demo-content").slideToggle("slow")});var j=a(".color-trigger");j.length>0&&j.on("click",function(){var e=a(this).attr("title");return a("#layoutstyle").attr("href","assets/css/"+e+".css"),!1});var _,V,B=a(".copy-trigger"),N=a(".copy-address"),F=a(".copy-feedback");function M(a,e,i){a.on("click",function(){return e.addClass("active"),i.hasClass("active")&&i.removeClass("active"),!1})}B.length>0&&(_=N,V=F,B.on("click",function(){var e=a(this);return e.parent().find(_).removeAttr("disabled").select(),document.execCommand("copy"),V.text("Copied to Clipboard").fadeIn().delay(1e3).fadeOut(),e.parent().find(_).attr("disabled","disabled"),!1}));var E=a(".make-pay"),R=a(".pay-done"),U=a(".tranx-payment-details"),H=a(".tranx-purchase-details");E.length>0&&M(E,U,H),R.length>0&&M(R,H,U);var X=a(".ath-trigger"),O=a(".ath-content");X.length>0&&X.on("click",function(){return O.slideDown(),!1});var W=a(".upload-zone");W.length>0&&W.each(function(){a(this).addClass("dropzone").dropzone({url:"/file/post"})})}(jQuery);
+!function(a) {
+    "use strict";
+    var e = a(window)
+      , i = a("body");
+    a(".navbar");
+    function l() {
+        return e.width()
+    }
+    "ontouchstart"in document.documentElement || i.addClass("no-touch");
+    var t = l();
+    e.on("resize", function() {
+        t = l()
+    });
+    var s = a(".is-sticky");
+    if (s.length > 0) {
+        var n = a("#mainnav").offset();
+        e.scroll(function() {
+            var a = e.scrollTop();
+            e.width() > 991 && a > n.top ? s.hasClass("has-fixed") || s.addClass("has-fixed") : s.hasClass("has-fixed") && s.removeClass("has-fixed")
+        })
+    }
+    var r = window.location.href
+      , d = r.split("#")
+      , o = a("a");
+    o.length > 0 && o.each(function() {
+        r === this.href && "" !== d[1] && a(this).closest("li").addClass("active").parent().closest("li").addClass("active")
+    });
+    var m = a(".input-select, select");
+    function c(a, e, i, l) {
+        var t = a
+          , s = e
+          , n = i
+          , r = l;
+        t.on("click", function() {
+            return s.toggleClass("active"),
+            t.toggleClass("active"),
+            n.hasClass("active") && n.removeClass("active"),
+            r.hasClass("active") && r.removeClass("active"),
+            !1
+        })
+    }
+    m.length > 0 && m.each(function() {
+        a(this).select2()
+    });
+    var h = a(".toggle-action")
+      , p = a(".topbar-action")
+      , g = a(".toggle-nav")
+      , v = a(".user-sidebar")
+      , f = a(".user-sidebar-overlay");
+    h.length > 0 && c(h, p, v, g),
+    g.length > 0 && c(g, v, p, h),
+    f.length > 0 && f.on("click", function() {
+        v.removeClass("active"),
+        g.removeClass("active")
+    }),
+    t < 991 ? v.delay(500).addClass("user-sidebar-mobile") : v.delay(500).removeClass("user-sidebar-mobile"),
+    e.on("resize", function() {
+        t < 991 ? v.delay(500).addClass("user-sidebar-mobile") : v.delay(500).removeClass("user-sidebar-mobile")
+    });
+    var u = a(".token-countdown-clock");
+    u.length > 0 && u.each(function() {
+        var e = a(this)
+          , i = e.attr("data-date");
+        e.countdown(i).on("update.countdown", function(e) {
+            a(this).html(e.strftime('<div class="col"><span class="countdown-time countdown-time-first">%D</span><span class="countdown-text">Days</span></div><div class="col"><span class="countdown-time">%H</span><span class="countdown-text">Hours</span></div><div class="col"><span class="countdown-time countdown-time-last">%M</span><span class="countdown-text">Minutes</span></div>'))
+        })
+    });
+    var x = a(".tranx-table");
+    if (x.length > 0) {
+        var b = x.DataTable({
+            ordering: !1,
+            autoWidth: !1,
+            dom: '<"row"<"col-10 text-left"f><"col-2 text-right"<"data-table-filter dropdown">>><"row"<"col-12"<"overflow-x-auto"t>>><"row"<"col-sm-6 text-left"p><"col-sm-6 text-sm-right"i>>',
+            pageLength: 7,
+            bPaginate: a(".data-table tbody tr").length > 7,
+            iDisplayLength: 7,
+            language: {
+                search: "",
+                searchPlaceholder: "Type in to Search",
+                info: "_START_ -_END_ of _TOTAL_",
+                infoEmpty: "No records",
+                infoFiltered: "( Total _MAX_  )",
+                paginate: {
+                    first: "First",
+                    last: "Last",
+                    next: "Next",
+                    previous: "Prev"
+                }
+            }
+        });
+        a(".data-table-filter").append('<a href="#" data-toggle="dropdown"><em class="ti ti-settings"></em></a><ul class="dropdown-menu dropdown-menu-right"><li><input class="data-filter data-filter-approved" type="radio" name="filter" id="all" checked value=""><label for="all">All</label></li><li><input class="data-filter data-filter-approved" type="radio" name="filter" id="approved" value="approved"><label for="approved">Approved</label></li><li><input class="data-filter data-filter-pending" type="radio" name="filter" value="pending" id="pending"><label for="pending">Pending</label></li><li><input class="data-filter data-filter-cancled" type="radio" name="filter" value="cancled" id="cancled"><label for="cancled">Cancled</label></li></ul>'),
+        a(".data-filter").on("change", function() {
+            var e = a(this).val();
+            b.columns(".tranx-status").search(e || "", !0, !1).draw()
+        })
+    }
+    var k = a(".activity-table");
+    k.length > 0 && (k.DataTable({
+        ordering: !1,
+        autoWidth: !1,
+        dom: '<"row"<"col-12"<"overflow-x-auto"t>>><"row align-items-center"<"col-sm-6 text-left"p><"col-sm-6 text-sm-right text-center"<"clear-table">>>',
+        pageLength: 7,
+        bPaginate: a(".data-table tbody tr").length > 7,
+        iDisplayLength: 7,
+        language: {
+            info: "_START_ -_END_ of _TOTAL_",
+            infoEmpty: "No records",
+            infoFiltered: "( Total _MAX_  )",
+            paginate: {
+                first: "First",
+                last: "Last",
+                next: "Next",
+                previous: "Prev"
+            }
+        }
+    }),
+    a(".clear-table").append('<a href="#" class="btn btn-primary btn-xs clear-activity">Clear Activity</a>'));
+    var w = a(".refferal-table");
+    w.length > 0 && w.DataTable({
+        ordering: !1,
+        autoWidth: !1,
+        dom: '<"row"<"col-12"<"overflow-x-auto"t>>><"row align-items-center"<"col-sm-6 text-left"p><"col-sm-6 text-sm-right text-center"i>>',
+        pageLength: 5,
+        bPaginate: a(".data-table tbody tr").length > 5,
+        iDisplayLength: 5,
+        language: {
+            info: "_START_ -_END_ of _TOTAL_",
+            infoEmpty: "No records",
+            infoFiltered: "( Total _MAX_  )",
+            paginate: {
+                first: "First",
+                last: "Last",
+                next: "Next",
+                previous: "Prev"
+            }
+        }
+    });
+    var y = a(".payment-check")
+      , A = a(".payment-btn");
+    y.length > 0 && y.on("change", function() {
+        var e = "#" + a(this).val();
+        A.attr("data-target", e)
+    });
+    var P = a('[data-toggle="tooltip"]');
+    P.length > 0 && P.tooltip();
+    var L = a(".date-picker");
+    L.length > 0 && L.each(function() {
+        L.datepicker({
+            format: "mm/dd/yyyy",
+            autoclose: !0,
+            todayHighlight: !0,
+            startView: "0",
+            minViewMode: "0"
+        }).datepicker("update", new Date)
+    });
+    var j = a(".color-trigger");
+    j.length > 0 && j.on("click", function() {
+        var e = a(this).attr("title");
+        return a("#layoutstyle").attr("href", "assets/css/" + e + ".css"),
+        !1
+    });
+    var _, V, B = a(".copy-trigger"), N = a(".copy-address"), F = a(".copy-feedback");
+    function M(a, e, i) {
+        a.on("click", function() {
+            return e.addClass("active"),
+            i.hasClass("active") && i.removeClass("active"),
+            !1
+        })
+    }
+    B.length > 0 && (_ = N,
+    V = F,
+    B.on("click", function() {
+        var e = a(this);
+        return e.parent().find(_).removeAttr("disabled").select(),
+        document.execCommand("copy"),
+        V.text("Copied to Clipboard").fadeIn().delay(1e3).fadeOut(),
+        e.parent().find(_).attr("disabled", "disabled"),
+        !1
+    }));
+    var E = a(".make-pay")
+      , R = a(".pay-done")
+      , U = a(".tranx-payment-details")
+      , H = a(".tranx-purchase-details");
+    E.length > 0 && M(E, U, H),
+    R.length > 0 && M(R, H, U);
+    var X = a(".ath-trigger")
+      , O = a(".ath-content");
+    X.length > 0 && X.on("click", function() {
+        return O.slideDown(),
+        !1
+    });
+    var W = a(".upload-zone");
+    W.length > 0 && W.each(function() {
+        a(this).addClass("dropzone").dropzone({
+            url: "/file/post"
+        })
+    })
+}(jQuery);

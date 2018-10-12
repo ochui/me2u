@@ -247,7 +247,7 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
-LOGIN_REDIRECT_URL = '/accounts'
+LOGIN_REDIRECT_URL = '/accounts/'
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
