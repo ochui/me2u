@@ -15,7 +15,7 @@ class UserDashboard(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         #check user email status
-        if not EmailAddress.objects.filter(user=request.user, verified=True).exists():
+        if not EmailAddress.objects.filter(user=self.request.user, verified=True).exists():
             context['verified_email'] = False
         else:
             context['verified_email'] = True
