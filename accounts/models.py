@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from django.utils.translation import gettext_lazy as _
-
+from django.urls import reverse
 from contact.models import Contact
 from django_countries.fields import CountryField
 
@@ -31,4 +31,6 @@ class CustomUser(AbstractUser):
     phone_number_status = models.CharField(_("phone number status"), max_length=50, choices=PHONE_NUMBER_STATUS_CHOICES, default='0')
     following = models.ManyToManyField("self", verbose_name=_("following"), through=Contact, symmetrical=False, related_name='followers')
 
-
+    def get_absolute_url(self):
+        return reverse("user_account")
+    
