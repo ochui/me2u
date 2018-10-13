@@ -1,3 +1,7 @@
+#  * This file is part of me2u project.
+#  * (c) Ochui Princewill Patrick <ochui.princewill@gmail.com>
+#  * For the full copyright and license information, please view the "LICENSE.md"
+#  * file that was distributed with this source code.
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.utils.translation import gettext_lazy as _
@@ -6,6 +10,7 @@ from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 from django_countries import countries
 from django.utils.translation import gettext_lazy as _
+from django import forms
 from .models import CustomUser
 
 # These User creation form will be use by staff users
@@ -101,3 +106,30 @@ class CustomResetPasswordForm(ResetPasswordForm):
                'placeholder': _('E-mail address')
            }
        )
+
+class AccountEditForm(forms.ModelForm):
+     class Meta:
+         model = CustomUser
+         fields = ('first_name', 'last_name', 'phone_number', 'date_of_birth', 'country')
+         widgets = {
+             'first_name':forms.TextInput(
+                 attrs={
+                     'class': 'input-bordered',
+                 }
+             ),
+             'last_name':forms.TextInput(
+                 attrs={
+                     'class': 'input-bordered',
+                 }
+             ),
+             'phone_number':forms.TextInput(
+                 attrs={
+                     'class': 'input-bordered'
+                 }
+             ),
+             'date_of_birth':forms.DateInput(
+                 attrs={
+                     'class': 'input-bordered'
+                 }
+             )
+         }

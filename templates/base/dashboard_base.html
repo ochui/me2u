@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{% static 'css/vendor.bundled751.css' %}">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{% static 'css/styled751.css' %} ">
+    {% block css %}
+    {% endblock css %}
 </head>
 
 <body class="user-dashboard">
@@ -47,17 +49,17 @@
                                     </ul>
                                 </div>
                                 <ul class="user-dropdown-btns btn-grp guttar-10px">
-                                    <li><a href="#" class="btn btn-xs btn-warning">Confirm Email</a></li>
+                                    {% if not verified_email %}<li><a href="{% url 'account_email' %}" class="btn btn-xs btn-warning">Confirm Email</a></li>{% endif %}
                                     <li><a href="kyc.html" class="btn btn-xs btn-warning">KYC Pending</a></li>
                                 </ul>
                                 <div class="gaps-1x"></div>
                                 <ul class="user-dropdown-links">
-                                    <li><a href="account.html"><i class="ti ti-id-badge"></i>My Profile</a></li>
-                                    <li><a href="security.html"><i class="ti ti-lock"></i>Security</a></li>
-                                    <li><a href="activity.html"><i class="ti ti-eye"></i>Activity</a></li>
+                                    <li><a href="{% url 'user_account' %}"><i class="ti ti-id-badge"></i>{% trans 'My Profile' %}</a></li>
+                                    <li><a href="security.html"><i class="ti ti-lock"></i>{% trans "Security" %}</a></li>
+                                    <li><a href="activity.html"><i class="ti ti-eye"></i>{% trans "Activity" %}</a></li>
                                 </ul>
                                 <ul class="user-dropdown-links">
-                                    <li><a href="{% url 'account_logout' %}"><i class="ti ti-power-off"></i>Logout</a></li>
+                                    <li><a href="{% url 'account_logout' %}"><i class="ti ti-power-off"></i> {% trans 'Logout' %} </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -73,8 +75,7 @@
                 </div><!-- .topbar-lg -->
                 <div class="topbar-action d-none d-lg-block">
                     <ul class="topbar-action-list">
-                        <li class="topbar-action-item topbar-action-link"><a href="#"><em class="ti ti-home"></em> Go
-                                to main site</a></li><!-- .topbar-action-item -->
+                        <li class="topbar-action-item topbar-action-link"><a href="#"><em class="ti ti-home"></em>{% trans 'Go to main site' %} </a></li><!-- .topbar-action-item -->
                         <li class="dropdown topbar-action-item topbar-action-language"><a href="#" data-toggle="dropdown">
                                 EN <em class="ti ti-angle-down"></em> </a>
                             <ul class="dropdown-menu">
@@ -101,12 +102,12 @@
                                         </ul>
                                     </div>
                                     <ul class="user-dropdown-links">
-                                        <li><a href="account.html"><i class="ti ti-id-badge"></i>My Profile</a></li>
-                                        <li><a href="security.html"><i class="ti ti-lock"></i>Security</a></li>
-                                        <li><a href="activity.html"><i class="ti ti-eye"></i>Activity</a></li>
+                                        <li><a href="{% url 'user_account' %}"><i class="ti ti-id-badge"></i>{% trans 'My Profile' %} </a></li>
+                                        <li><a href="security.html"><i class="ti ti-lock"></i>{% trans "Security" %}</a></li>
+                                        <li><a href="activity.html"><i class="ti ti-eye"></i>{% trans "Activity" %}</a></li>
                                     </ul>
                                     <ul class="user-dropdown-links">
-                                        <li><a href="{% url 'account_logout' %}"><i class="ti ti-power-off"></i>Logout</a></li>
+                                        <li><a href="{% url 'account_logout' %}"><i class="ti ti-power-off"></i>{% trans 'Logout' %}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -124,9 +125,9 @@
                     <div class="user-box d-none d-lg-block">
                         <div class="user-image"><img src="{% static 'images/user-thumb-lg.png' %}" alt="thumb"></div>
                         <h6 class="user-name">{{ user.get_full_name }}</h6>
-                        <div class="user-uid">Username: <span>{{ user.username }}</span></div>
+                        <div class="user-uid">{% trans "Username:" %} <span>{{ user.username }}</span></div>
                         <ul class="btn-grp guttar-10px">
-                            <li><a href="#" class="btn btn-xs btn-warning">Confirm Email</a></li>
+                            {% if not verified_email %}<li><a href="{% url 'account_email' %}" class="btn btn-xs btn-warning">Confirm Email</a></li>{% endif %}
                             <li><a href="kyc.html" class="btn btn-xs btn-warning">KYC Pending</a></li>
                         </ul>
                     </div><!-- .user-box -->
@@ -136,7 +137,7 @@
                         <li><a href="tokens.html"><em class="ti ti-pie-chart"></em>Contributions</a></li>
                         <li><a href="transactions.html"><em class="ti ti-control-shuffle"></em>Transactions</a></li>
                         <li><a href="referrals.html"><em class="ti ti-infinite"></em>Referral</a></li>
-                        <li><a href="account.html"><em class="ti ti-user"></em>Account</a></li>
+                        <li><a href="{% url 'user_account' %}"><em class="ti ti-user"></em>{% trans "Account" %}</a></li>
                         <li><a href="security.html"><em class="ti ti-lock"></em>Security</a></li>
                     </ul><!-- .user-icon-nav -->
                     <div class="user-sidebar-sap"></div><!-- .user-sidebar-sap -->
@@ -151,7 +152,7 @@
                         <div class="gaps-1x"></div>
                         <ul class="topbar-action-list">
                             <li class="topbar-action-item topbar-action-link"><a href="#"><em class="ti ti-home"></em>
-                                    Go to main site</a></li><!-- .topbar-action-item -->
+                                    {% trans "Go to main site" %}</a></li><!-- .topbar-action-item -->
                             <li class="dropup topbar-action-item topbar-action-language"><a href="#" data-toggle="dropdown"
                                     aria-haspopup="true"> EN <em class="ti ti-angle-up"></em> </a>
                                 <ul class="dropdown-menu">
@@ -185,5 +186,7 @@
     <!-- JavaScript (include all script here) -->
     <script src="{% static 'js/jquery.bundled751.js' %}"></script>
     <script src="{% static 'js/scriptd751.js' %}"></script>
+    {% block javascript %}
+    {% endblock javascript %}
 </body>
 </html>
