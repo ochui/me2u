@@ -46,4 +46,4 @@ class Coin(models.Model):
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
 
     def __str__(self):
-        return _(self.name)
+        return _('%(name)s') % {'name':self.name}

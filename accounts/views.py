@@ -7,10 +7,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
 from django.http import Http404
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 from allauth.account.models import EmailAddress
 from .models import CustomUser
 from .forms import AccountEditForm
+from wallet.models import Wallet
+from exchange.models import Coin
 
 class UserDashboard(LoginRequiredMixin, TemplateView):
     
@@ -40,6 +42,10 @@ class UserAccountDetails(LoginRequiredMixin, UpdateView):
             context['verified_email'] = False
         else:
             context['verified_email'] = True
+        
+        #Get Supported Crypto
+        coins = Coin.objects.all()
+        context['coins'] = coins
         return context
     
     def get_object(self, queryset=None):
