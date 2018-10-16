@@ -5,7 +5,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.utils.translation import gettext_lazy as _
-from allauth.account.forms import SignupForm, LoginForm, ResetPasswordForm
+from allauth.account.forms import SignupForm, LoginForm, ResetPasswordForm, AddEmailForm
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 from django_countries import countries
@@ -40,31 +40,31 @@ class CustomSignupForm(SignupForm):
         super(CustomSignupForm, self).__init__(*args, **kwargs)
         self.fields['email'].widget = forms.EmailInput(
             attrs={
-               'class': 'input-bordered',
+                'class': 'input-bordered',
                 'placeholder': _('E-mail address'),
-                'autofocus': 'autofocus' 
+                'autofocus': 'autofocus'
             }
         )
 
         self.fields['country'].widget = CountrySelectWidget(
             attrs={
-               'class': 'input-bordered',
+                'class': 'input-bordered',
             },
-            choices = [('', _('Select country'))] + list(countries),
-            
+            choices=[('', _('Select country'))] + list(countries),
+
         )
 
         self.fields['password1'].widget = forms.PasswordInput(
             attrs={
-               'class': 'input-bordered',
-               'placeholder': _('Password')
+                'class': 'input-bordered',
+                'placeholder': _('Password')
             }
         )
 
         self.fields['password2'].widget = forms.PasswordInput(
             attrs={
-               'class': 'input-bordered',
-               'placeholder': _('Password (again)')
+                'class': 'input-bordered',
+                'placeholder': _('Password (again)')
             }
         )
 
@@ -96,40 +96,55 @@ class CustomLoginForm(LoginForm):
             }
         )
 
+
 class CustomResetPasswordForm(ResetPasswordForm):
-    
+
     def __init__(self, *args, **kwargs):
-       super(CustomResetPasswordForm, self).__init__(*args, **kwargs)
-       self.fields['email'].widget = forms.EmailInput(
-           attrs={
-               'class': 'input-bordered',
-               'placeholder': _('E-mail address')
-           }
-       )
+        super(CustomResetPasswordForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget = forms.EmailInput(
+            attrs={
+                'class': 'input-bordered',
+                'placeholder': _('E-mail address')
+            }
+        )
+
+
+class CustomAddEmailForm(AddEmailForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CustomAddEmailForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget = forms.EmailInput(
+            attrs={
+                'class': 'input-bordered',
+                'placeholder': _('E-mail address')
+            }
+        )
+
 
 class AccountEditForm(forms.ModelForm):
-     class Meta:
-         model = CustomUser
-         fields = ('first_name', 'last_name', 'phone_number', 'date_of_birth', 'country')
-         widgets = {
-             'first_name':forms.TextInput(
-                 attrs={
-                     'class': 'input-bordered',
-                 }
-             ),
-             'last_name':forms.TextInput(
-                 attrs={
-                     'class': 'input-bordered',
-                 }
-             ),
-             'phone_number':forms.TextInput(
-                 attrs={
-                     'class': 'input-bordered'
-                 }
-             ),
-             'date_of_birth':forms.DateInput(
-                 attrs={
-                     'class': 'input-bordered'
-                 }
-             )
-         }
+    class Meta:
+        model = CustomUser
+        fields = ('first_name', 'last_name', 'phone_number',
+                  'date_of_birth', 'country')
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={
+                    'class': 'input-bordered',
+                }
+            ),
+            'last_name': forms.TextInput(
+                attrs={
+                    'class': 'input-bordered',
+                }
+            ),
+            'phone_number': forms.TextInput(
+                attrs={
+                    'class': 'input-bordered'
+                }
+            ),
+            'date_of_birth': forms.DateInput(
+                attrs={
+                    'class': 'input-bordered'
+                }
+            )
+        }

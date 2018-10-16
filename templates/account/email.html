@@ -1,0 +1,56 @@
+{% extends 'base/dashboard_base.html' %}
+{% block content %}{% load i18n %}
+<div class="user-content">
+        <div class="user-panel">
+                <h2 class="user-panel-title">{% trans "E-mail Addresses" %}</h2>
+                <form action="{% url 'account_email' %}" class="email_list" method="post">
+                        {% csrf_token %}
+                        <table class="data-table activity-table">
+                                <thead>
+                                        <tr>
+                                                <th class="tranx-no"><span>{% trans "E-Mail" %}</span></th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        {% for emailaddress in user.emailaddress_set.all %}
+                                        <tr>
+                                                <td class="tranx-no payment-item"><div ><input class="payment-check" type="radio" id="email_radio_{{forloop.counter}}" type="radio" name="email"
+                                                        {% if emailaddress.primary or ser.emailaddress_set.count == 1 %}checked="checked" {%endif %} value="{{emailaddress.email}}" ><label for="email_radio_{{forloop.counter}}">
+                                        <span class="payment-cur">{{emailaddress.email}}(    {% if emailaddress.verified %}
+                                                        <span class="verified">{% trans "Verified" %}</span>
+                                                        {% else %}
+                                                        <span class="unverified">{% trans "Unverified" %}</span>
+                                                        {% endif %}
+                                                          {% if emailaddress.primary %}<span class="primary">{% trans "Primary" %}</span>{% endif %})</span>
+                                    </label></div></td>
+                                        </tr>
+                                        {% endfor %}
+                                </tbody>
+                        </table>
+                        <div class="buttonHolder">
+                                <button class="secondaryAction" type="submit" name="action_primary">{% trans 'Make Primary' %}</button>
+                                <button class="secondaryAction" type="submit" name="action_send">{% trans 'Re-send Verification' %}</button>
+                                <button class="primaryAction" type="submit" name="action_remove">{% trans 'Remove' %}</button>
+                        </div>
+                </form>
+                <div>
+                        <h2 class="user-panel-title">{% trans "Add E-mail Address" %}</h2>
+
+                        <form method="post" action="{% url 'account_email' %}" class="add_email">
+                                {% csrf_token %}
+                                {{ form.email }}
+                                <div class="gaps-1x"></div><!-- 10px gap -->
+                                <div class="d-sm-flex justify-content-between align-items-center">
+                                        <button class="btn btn-primary" name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+                                        <div class="gaps-2x d-sm-none"></div>
+                                        {% if form.errors %}
+                                        <span class="color-danger">
+                                                {{ form.errors.email }}
+                                        </span>
+                                        {% endif %}
+                                </div>
+                        </form>
+                </div>
+        </div><!-- .user-panel -->
+</div><!-- .user-content -->
+{% endblock content %}

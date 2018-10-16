@@ -263,7 +263,8 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_FORMS = {
 'signup': 'accounts.forms.CustomSignupForm',
 'login': 'accounts.forms.CustomLoginForm',
-'reset_password': 'accounts.forms.CustomResetPasswordForm'
+'reset_password': 'accounts.forms.CustomResetPasswordForm',
+'add_email': 'accounts.forms.CustomAddEmailForm',
 }
 
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
