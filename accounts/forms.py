@@ -9,8 +9,7 @@ from allauth.account.forms import SignupForm, LoginForm, ResetPasswordForm, AddE
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 from django_countries import countries
-from django.utils.translation import gettext_lazy as _
-from django import forms
+
 from .models import CustomUser
 
 # These User creation form will be use by staff users
