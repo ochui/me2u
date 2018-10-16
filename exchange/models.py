@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 
 from django.utils.translation import gettext_lazy as _
+from django_countries.fields import CountryField
 
 class Trade(models.Model):
     """
@@ -24,7 +25,7 @@ class Offer(models.Model):
 
     
     owner =  models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_('owner'), related_name='offers')
-    location = models.CharField(_('location'), max_length=15)
+    location = CountryField(_('location'), blank_label=_('select location'))
     coin = models.ForeignKey('Coin', on_delete=models.CASCADE, null=False, blank=False)
     rate_per_coin = models.DecimalField(_('rate per coin'), max_digits=19, decimal_places=10)
     minimum_amount = models.DecimalField(_('minimum amount'), max_digits=19, decimal_places=10)
