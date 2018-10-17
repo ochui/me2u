@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
@@ -37,6 +38,10 @@ class Offer(models.Model):
 
     def __str__(self):
         return _('%(coin)s at the rate of %(rate)s per coin') % {'coin':self.coin, 'rate':self.rate_per_coin}
+
+    def get_absolute_url(self):
+        return reverse("user_offer_list")
+    
 
 class Coin(models.Model):
 

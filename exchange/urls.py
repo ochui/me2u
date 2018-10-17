@@ -6,5 +6,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('offer', views.OfferListView.as_view(), name="user_offer_list"),
     path('offer/create', views.OfferCreateView.as_view(), name='user_create_offer'),
 ]

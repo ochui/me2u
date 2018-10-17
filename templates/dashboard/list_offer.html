@@ -1,0 +1,62 @@
+{% extends 'base/dashboard_base.html' %}
+{% block content %}{% load i18n %}
+{% with offers as offer_list %}
+<div class="user-content">
+    <div class="user-panel">
+        <h2 class="user-panel-title">{% trans "My Offers" %}</h2>
+    {% if offer_list %}
+        <h4>{% trans "Offer Statistics" %}</h4>
+        <div class="refferal-statistics">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="refferal-statistics-item">
+                        <h6>{% trans "Offer Count" %}</h6><span>{{offer_list.count}}</span>
+                    </div>
+                </div><!-- .col -->
+                <div class="col-md-4">
+                    <div class="refferal-statistics-item">
+                        <h6>{% trans "Views Count" %}</h6><span>31</span>
+                    </div>
+                </div><!-- .col -->
+                <div class="col-md-4">
+                    <div class="refferal-statistics-item">
+                        <h6>{% trans "Total Sale" %}</h6><span>155</span>
+                    </div>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .refferal-statistics -->
+        <h4>{% trans "Offer List" %}</h4>
+        <table class="data-table refferal-table">
+            <thead>
+                <tr>
+                    <th class="refferal-name"><span>{% trans "Offer" %}</span></th>
+                    <th class="refferal-tokens"><span>{% trans "cryptocurrency" %}</span></th>
+                    <th class="refferal-bonus"><span>Views</span></th>
+                    <th class="refferal-date"><span>Created</span></th>
+                    <th class="refferal-channel"><span>Expires</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for offer in offer_list %}
+                <tr>
+                    <td class="refferal-name">{{offer.id}}</td>
+                    <td class="refferal-tokens">{{ offer.coin }}</td>
+                    <td class="refferal-bonus">8</td>
+                    <td class="refferal-date">{{offer.created_at}}</td>
+                    <td class="refferal-channel">08-02-2018</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="status status-empty">
+                <div class="status-icon"><em class="ti ti-files"></em>
+                    <div class="status-icon-sm"><em class="ti ti-close"></em></div>
+                </div><span class="status-text">{% trans "You have not created any offer yet! You should create some." %}</span>
+                <a href="{% url 'user_create_offer' %}" class="btn btn-primary">{% trans "Create Now" %}</a>
+        </div>
+        {% endif %}
+    </div><!-- .user-panel -->
+</div><!-- .user-content -->
+{% endwith %}
+{% endblock content %}
