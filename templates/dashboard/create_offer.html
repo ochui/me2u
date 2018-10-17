@@ -1,0 +1,69 @@
+{% extends 'base/dashboard_base.html' %}
+{% block content %}{% load i18n %}
+<div class="user-content">
+    <div class="user-panel">
+        <h2 class="user-panel-title">{% trans "Create New Offer" %}</h2>
+        {% comment %} <div class="alert-box alert-danger">
+            <div class="alert-txt">Confirm your email address</div>
+        </div><!-- .alert-box --> {% endcomment %}
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="personal-data">
+                <form method='POST' action="{% url 'user_create_offer' %}">
+                    {% csrf_token %}
+                    <div class="input-item input-with-label">
+                        <label for="coin" class="input-item-label">{% trans "Crytocurrency" %}</label>
+                        {{form.coin}}
+                    </div><!-- .input-item -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-item input-with-label">
+                                <label for="rate_per_coin" class="input-item-label">{% trans "Rate Per Coin" %}</label>
+                                {{form.rate_per_coin}}
+                            </div><!-- .input-item -->
+                        </div><!-- .col -->
+                        <div class="col-md-4">
+                            <div class="input-item input-with-label">
+                                <label for="minimum_amount" class="input-item-label">{% trans "Minimum Amount" %}</label>
+                                {{form.minimum_amount}}
+                            </div><!-- .input-item -->
+                        </div><!-- .col -->
+                        <div class="col-md-4">
+                            <div class="input-item input-with-label">
+                                <label for="maximum_amount" class="input-item-label">{% trans 'Maximum Amount' %}</label>
+                                {{form.maximum_amount}}
+                            </div><!-- .input-item -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-item input-with-label">
+                                <label for="duration" class="input-item-label">{% trans 'Duration' %}</label>
+                                <input class="input-bordered date-picker" type="text" id="date-of-birth" name="date-of-birth">
+                            </div><!-- .input-item -->
+                        </div><!-- .col -->
+                        <div class="col-md-6">
+                            <div class="input-item input-with-label">
+                                <label for="location" class="input-item-label">{% trans "Location" %}</label>
+                                {{form.location}}
+                            </div><!-- .input-item -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+
+                    <div class="input-item input-with-label">
+                        <label for="terms" class="input-item-label">{% trans "Terms" %}</label>
+                        {{form.terms}}
+                    </div><!-- .input-item -->
+                    <div class="input-item input-with-label">
+                        <label for="instructions" class="input-item-label">{% trans "Instructions" %}</label>
+                        {{form.instructions}}
+                    </div><!-- .input-item -->
+                    <div class="gaps-1x"></div><!-- 10px gap -->
+                    <div class="d-sm-flex justify-content-between align-items-center">
+                        <button class="btn btn-primary">{% trans "Create Offer" %}</button>
+                    </div>
+                </form><!-- form -->
+            </div><!-- .tab-pane -->
+        </div><!-- .tab-content -->
+    </div><!-- .user-panel -->
+</div><!-- .user-content -->
+{% endblock content %}
