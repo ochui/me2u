@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load static %}{% load i18n %}
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Fonts -->
+	<link href="://fonts.googleapis.com/css8382.css?family=Montserrat:400,500,600%7CRoboto:400,400i,500,700" rel="stylesheet">
+
+	<!-- Icons -->
+	<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'css/cryptocoins.css' %}">
+	<link rel="stylesheet" href="{% static 'css/cryptocoins-colors.css' %}">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<link id="switch-color" rel="stylesheet" href="{% static 'css/main-color1.css' %}">
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Dmitry Volkov">
+	<title>{% block title %}{% trans "Mine – Crypto" %}{% endblock title %}</title>
+
+</head>
+
+<body>
+
+	<!-- header -->
+	<header class="header">
+		<!-- logo -->
+		<div class="header__logo">
+			<a href="{% url 'landing_home' %}">
+				<img src="img/logo.png" alt="">
+			</a>
+		</div>
+		<!-- end logo -->
+
+		<!-- navigation -->
+		<ul class="header__nav">
+			<li><a href="{% url 'landing_home' %}">{% trans "Home" %}</a></li>
+			<li class="dropdown header__dropdown">
+				<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true"
+				 aria-expanded="false">Offer</a>
+
+				<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuLink1">
+					<li><a href="index.html">{% trans "Browse offer" %}</a></li>
+					<li><a href="{% url 'user_create_offer' %}">{% trans "Create new offer" %}</a></li>
+				</ul>
+			</li>
+			<li><a href="services.html">Services</a></li>
+			{% comment %} <li><a href="pricing.html">Pricing</a></li> {% endcomment %}
+			<li><a href="blog.html">Blog</a></li>
+		</ul>
+		<!-- end navigation -->
+
+		<!-- buttons -->
+		<div class="header__btns">
+			{% if user.is_authenticated %}
+			<a href="{% url 'user_dashboard' %}" class="btn btn--transparent btn--header">{% trans "My Account" %}</a>
+			{% else %}
+			<a href="{% url 'account_login' %}" class="btn btn--transparent btn--header">{% trans "log in" %}</a>
+			<a href="{% url 'account_signup' %}" class="btn btn--white btn--header">{% trans "sign up" %}</a>
+			{% endif %}
+		</div>
+		<!-- end buttons -->
+
+		<!-- mob button -->
+		<button class="header__menu" type="button">
+			<i class="ti-menu"></i>
+			<i class="ti-close"></i>
+		</button>
+		<!-- end mob button -->
+	</header>
+	<!-- end header -->
+
+	{% block content %}
+	{% endblock content %}
+
+	<!-- footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-sm-6 col-md-4 col-lg-3">
+					<!-- logo -->
+					<div class="footer__logo">
+						<a href="index.html">
+							<img src="img/logo.png" alt="">
+						</a>
+					</div>
+					<!-- end logo -->
+				</div>
+
+				<div class="col-6 col-sm-6 col-md-4 col-lg-3">
+					<h6 class="footer__title">Features</h6>
+					<ul class="footer__list">
+						<li><a href="#">Instant connection</a></li>
+						<li><a href="#">Instant conclusion</a></li>
+						<li><a href="#">Detailed statistics</a></li>
+						<li><a href="#">Power distribution</a></li>
+					</ul>
+				</div>
+
+				<div class="col-6 col-sm-6 col-md-4 col-lg-3">
+					<h6 class="footer__title">Company</h6>
+					<ul class="footer__list">
+						<li><a href="#">Customers</a></li>
+						<li><a href="#">Careers</a></li>
+						<li><a href="#">Press</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+				</div>
+
+				<div class="col-12 col-sm-6 col-lg-3">
+					<h6 class="footer__title">Contact</h6>
+					<ul class="footer__list">
+						<li><a href="tel:+18002345678">+1 (800) 234-5678</a></li>
+						<li><a href="mailto:support@smartmine.com">support@smartmine.com</a></li>
+					</ul>
+					<ul class="footer__social">
+						<li><a href="#"><i class="ti-facebook"></i></a></li>
+						<li><a href="#"><i class="ti-linkedin"></i></a></li>
+						<li><a href="#"><i class="ti-instagram"></i></a></li>
+						<li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+						<li><a href="#"><i class="ti-google"></i></a></li>
+					</ul>
+				</div>
+
+				<div class="col-12">
+					<div class="footer__copyright">
+						<small>© 2018 Mine.</small>
+
+						<ul>
+							<li><a href="#">About Smart Mine</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- end footer -->
+
+	<script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'js/smooth-scroll.min.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/particles.min.js' %}"></script>
+	<script src="{% static 'js/particles-app.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
