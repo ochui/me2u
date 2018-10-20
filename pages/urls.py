@@ -7,4 +7,5 @@ from . import views
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name="landing_home"),
+    path('offer', views.OfferListView.as_view(), name='offer_list'),
 ]

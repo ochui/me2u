@@ -1,0 +1,65 @@
+table {
+    color: #6d6d6d;
+    float: left;
+    font-family: segoe;
+    position: relative;
+    font-size: 17px;
+    width: 100%
+}
+thead th {
+    box-sizing: border-box;
+    font-weight: 700;
+    padding: 10px;
+    text-align: left
+}
+
+tbody td {
+    box-sizing: border-box;
+    padding: 15px 10px;
+}
+
+thead tr {
+    border-bottom: 1px solid #d5d5d5
+}
+
+tbody tr:last-child {
+    border: none
+}
+
+tbody tr {
+    border-bottom: 1px dashed #666;
+}
+
+.green-btn:hover {
+    background: transparent none repeat scroll 0 0;
+    color: #11cdb1;
+    transition: all 0.25s ease 0s
+}
+
+.green-btn {
+    background: #11cdb1 none repeat scroll 0 0;
+    border: 1px solid #11cdb1;
+    box-sizing: border-box;
+    color: white;
+    font-family: segoe;
+    font-size: 16px;
+    padding: 4px 15px;
+    text-decoration: none;
+    transition: all 0.25s ease 0s
+}
+
+tbody td.red {
+    color: red;
+    text-indent: 10px
+}
+
+thead th:last-child {
+    width: 10%
+}
+table tr {
+    padding-left: 5px;
+}
+
+table td {
+  padding: 10px;
+}

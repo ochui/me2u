@@ -1,0 +1,90 @@
+{% extends 'base/landing_base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/offer.css' %}">
+<link id="switch-color" rel="stylesheet" href="{% static 'css/table-responsive.css' %}">
+{% endblock css %}
+{% block content %}
+<!-- page title -->
+<section class="section section--first section--bg" data-bg="img/section/section-bg.jpg">
+    <div class="container">
+        <div class="row">
+            <!-- section title -->
+            <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                <h2 class="section__title section__title--white">Open Offers</h2>
+                <p class="section__text section__text--white section__text--head">Welcome to blog</p>
+            </div>
+            <!-- end section title -->
+        </div>
+    </div>
+</section>
+<!-- end page title -->
+<!-- offer -->
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <!-- sidebar -->
+                    <div class="col-12 col-md-4 order-md-8">
+                        <div class="sidebar">
+                            <form action="#" class="sidebar__search">
+                                <input type="text" class="form__input" placeholder="Search">
+                                <button type="button"><i class="ti-search"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="sidebar">
+                            <span class="sidebar__title">Currencies</span>
+
+                            <ul class="sidebar__list">
+                                {% for coin in coins %}
+                                <li><a href="#">{{coin.name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end sidebar -->
+
+                    <!-- content -->
+                    <div class="col-12 col-md-8 order-md-4">
+                        <section class="post" id="no-more-tables">
+                            <table>
+                                <thead class="cf">
+                                    <tr>
+                                        <th>Owner</th>
+                                        <th>Currency</th>
+                                        <th>Min - Max Amount</th>
+                                        <th>Rate per coin</th>
+                                        <th>Payment channel</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for offer in offers %}
+                                    <tr>
+                                        <td data-title="Owner">{{offer.owner}}</td>
+                                        <td data-title="Currency">{{offer.coin}}</td>
+                                        <td data-title="Min-Max Amount">{{offer.minimum_amount|floatformat:"-3"}} - {{offer.maximum_amount|floatformat:"-3"}}</td>
+                                        <td data-title="Rate per coin">{{offer.rate_per_coin|floatformat:"-3"}}</td>
+                                        <td data-title="Payment channel">Remita</td>
+                                        <td data-title=""><a href="#" class="btn btn-success">View</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <!-- paginator -->
+                        {% include 'landing/partials/pagination.html' with page=page_obj %}
+                        <!-- end paginator -->
+                    </div>
+                    <!-- end content -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end offer -->
+
+{% endblock content %}

@@ -1,0 +1,13 @@
+<div>
+    <ul class="paginator">
+        {% if page.has_previous %}
+        <li class="paginator__item paginator__item--prev"><a href="?page={{ paginator.next }}"><i class="ti-arrow-left"></i></a></li>
+        {% endif %}
+        <li class="paginator__item paginator__item--active"><a href="#">{{ page.number }}</a></li>
+        {% comment %} <li class="paginator__item"><a href="#">2</a></li>
+        <li class="paginator__item"><a href="#">3</a></li> {% endcomment %}
+        {% if page.has_next %}
+        <li class="paginator__item paginator__item--next"><a href="?page={{ paginator.page.next_page_number }}"><i class="ti-arrow-right"></i></a></li>
+        {% endif %}
+    </ul>
+</div>
