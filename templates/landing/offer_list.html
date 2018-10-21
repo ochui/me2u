@@ -68,7 +68,7 @@
                                         <td data-title="Min-Max Amount">{{offer.minimum_amount|floatformat:"-3"}} - {{offer.maximum_amount|floatformat:"-3"}}</td>
                                         <td data-title="Rate per coin">{{offer.rate_per_coin|floatformat:"-3"}}</td>
                                         <td data-title="Payment channel">Remita</td>
-                                        <td data-title=""><a href="#" class="btn btn-success">View</a></td>
+                                        <td data-title=""><a href="{% url 'offer_details' offer.offer_id %}" class="btn btn-success">View</a></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

@@ -1,0 +1,193 @@
+{% extends 'base/landing_base.html' %}
+{% block content %}{% load static %}{% load i18n %}
+<!-- article -->
+<div class="section section--first section--border-top section--border-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                <div class="article">
+                    <!-- .row -->
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12">
+                            <div class="white-box">
+                                <div class="user-bg"> <img width="100%" alt="user" src="{% static 'images/human-a.jpg' %}">
+                                    <div class="overlay-box">
+                                        <div class="user-content">
+                                            <a href="javascript:void(0)"><img src="{% static 'images/user-thumb-sm.png' %}"
+                                                    class="thumb-lg img-circle" alt="img"></a>
+                                            <h4 class="text-white">{{offer.owner}}</h4>
+                                            <h5 class="text-white">{{offer.owner.get_full_name}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-btm-box">
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-purple">Following</p>
+                                        <h1>{{offer.owner.following.count}}</h1>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-blue">Followers</p>
+                                        <h1>{{offer.owner.followers.count}}</h1>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-danger">Offer</p>
+                                        <h1>556</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-xs-12">
+                            <div class="white-box">
+                                <div class="tab-content">
+                                    <div class="tab-pane" id="profile">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Rate</strong>
+                                                <br>
+                                                <p class="text-muted">{{offer.rate_per_coin|floatformat:"-3"}}</p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Minimum Amount</strong>
+                                                <br>
+                                                <p class="text-muted">{{offer.minimum_amount|floatformat:"-3"}}</p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Maximum Amount</strong>
+                                                <br>
+                                                <p class="text-muted">{{offer.maximum_amount|floatformat:"-3"}}</p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6"> <strong>Location</strong>
+                                                <br>
+                                                <p class="text-muted">London</p>
+                                            </div>
+                                        </div>
+                                        <h4 class="font-bold m-t-30">Terms</h4>
+                                        <hr>
+                                        {{offer.terms}}
+                                        <br><br>
+                                        <h4 class="font-bold m-t-30">Instructions</h4>
+                                        <hr>
+                                        {{offer.instructions}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <!-- article social -->
+                    <div class="article__social">
+                        <a class="article__social-btn article__social-btn--fb" href="#"><i class="ti-facebook"></i><span>share</span></a>
+                        <a class="article__social-btn article__social-btn--tw" href="#"><i class="ti-twitter-alt"></i><span>tweet</span></a>
+                        <a class="btn" href="#"><span>Buy</span></a>
+                    </div>
+                    <!-- end article social -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end article -->
+{% endblock content %}
+{% block css %}
+<style>
+    /*User-box*/
+    .user-bg {
+        margin: -25px;
+        height: 230px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .user-bg .overlay-box {
+        background: #707cd2;
+        opacity: 0.9;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        height: 100%;
+        text-align: center;
+    }
+
+    .user-bg .overlay-box .user-content {
+        padding: 15px;
+        margin-top: 30px;
+    }
+
+    .user-btm-box {
+        padding: 40px 0 10px;
+        clear: both;
+        overflow: hidden;
+    }
+
+    /* Text colors */
+    .text-white {
+        color: #ffffff;
+    }
+
+    .text-danger {
+        color: #ff7676;
+    }
+
+    .text-muted {
+        color: #8d9ea7;
+    }
+
+    .text-warning {
+        color: #ffc36d;
+    }
+
+    .text-success {
+        color: #53e69d;
+    }
+
+    .text-info {
+        color: #2cabe3;
+    }
+
+    .text-inverse {
+        color: #4c5667;
+    }
+
+    .text-blue {
+        color: #02bec9;
+    }
+
+    .text-purple {
+        color: #707cd2;
+    }
+
+    .text-primary {
+        color: #707cd2;
+    }
+
+    .text-megna {
+        color: #01c0c8;
+    }
+
+    .text-dark {
+        color: #313131 !important;
+    }
+
+    .fw-500 {
+        font-weight: 500;
+    }
+
+    .white-box {
+        background: #ffffff;
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+
+    .white-box .box-title {
+        margin: 0px 0px 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+
+    .panel {
+        border-radius: 0px;
+        margin-bottom: 30px;
+        border: 0px;
+        box-shadow: none;
+    }
+</style>
+{% endblock css %}

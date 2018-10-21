@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from django.db.models.signals import pre_save
+from .utils import unique_order_id_generator
 
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
@@ -24,7 +26,7 @@ class Trade(models.Model):
 
 class Offer(models.Model):
 
-    
+    offer_id = models.CharField(_("offer id"), max_length=10, null=True)
     owner =  models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_('owner'), related_name='offers')
     location = CountryField(_('location'), blank_label=_('select location'))
     coin = models.ForeignKey('Coin', on_delete=models.CASCADE, null=False, blank=False)
@@ -53,3 +55,11 @@ class Coin(models.Model):
 
     def __str__(self):
         return _('%(name)s') % {'name':self.name}
+
+
+def pre_save_create_unique_offer_id(sender, instance, *args, **kwargs):
+
+    if not instance.offer_id:
+        instance.offer_id= unique_order_id_generator(instance)
+
+pre_save.connect(pre_save_create_unique_offer_id, sender=Offer)
