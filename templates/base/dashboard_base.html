@@ -134,8 +134,8 @@
                     <ul class="user-icon-nav">
                         <li><a href="index-2.html"><em class="ti ti-dashboard"></em>Dashboard</a></li>
                         <li><a href="kyc.html"><em class="ti ti-files"></em>KYC Application</a></li>
-                        <li><a href="tokens.html"><em class="ti ti-pie-chart"></em>Contributions</a></li>
-                        <li><a href="transactions.html"><em class="ti ti-control-shuffle"></em>Transactions</a></li>
+                        <li><a href="{% url 'user_offer_list' %}"><em class="ti ti-pie-chart"></em>{% trans "Offer" %}</a></li>
+                        <li><a href="{% url 'user_trade_list' %}"><em class="ti ti-control-shuffle"></em>{% trans "Trade" %}</a></li>
                         <li><a href="referrals.html"><em class="ti ti-infinite"></em>Referral</a></li>
                         <li><a href="{% url 'user_account' %}"><em class="ti ti-user"></em>{% trans "Account" %}</a></li>
                         <li><a href="security.html"><em class="ti ti-lock"></em>Security</a></li>

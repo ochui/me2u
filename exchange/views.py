@@ -74,3 +74,8 @@ class TradeCreateView(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
 
+class TradeListView(ListView):
+
+    model = Trade
+    template_name = "dashboard/list_trade.html"
+    context_object_name = 'trades'
