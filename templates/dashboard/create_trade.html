@@ -1,0 +1,74 @@
+{% extends 'base/dashboard_base.html' %}
+{% load static %}{% load i18n %}
+{% block content %}
+<div class="user-content">
+    <div class="user-panel">
+        <h2 class="user-panel-title">{% trans "Open New Trade" %}</h2>
+        {% if form.errors %}
+        <div class="alert-box alert-danger">
+            <div class="alert-txt">{% for error in form.errors %}{{error}}{% endfor %}</div>
+        </div><!-- .alert-box -->
+        {% endif %}
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="personal-data">
+                <form method='POST' action="{% url 'user_create_trade' offer.offer_id %}">
+                    {% csrf_token %}
+                    <h5 class="user-panel-subtitle">{% trans "01. Select the payment channel" %}</h5>
+                    <div class="gaps-1x"></div>
+                    <div class="payment-list">
+                        <div class="row">
+                            {% for radio in form.payment_channel %}
+                            <div class="col-md-6 col-sm-6">
+                                <div class="payment-item">{{ radio.tag }}<label for="{{ radio.id_for_label }}">
+                                        <div class="payment-icon payment-icon-usd"><em class="payment-icon fas fa-credit-card"></em></div><span
+                                            class="payment-cur">{{ radio.choice_label }}</span>
+                                    </label></div>
+                            </div><!-- .col -->
+                            {% endfor %}
+                        </div><!-- .row -->
+                    </div><!-- .payment-list -->
+                    <div class="gaps-1x"></div>
+                    <h5 class="user-panel-subtitle">{% trans "02. Set amount you would like to purchase" %}</h5>
+                    <p>To become a part of the ICO Crypto project and purchase of ICOX token will only be
+                        possible after payment made and receving an approval. As you like to participate our
+                        project, please select payment method and enter the amount of ICOX tokens you wish to
+                        purchase. You can buy ICOX tokens using ETH, BTC, LTC or USD. </p>
+                    <div class="gaps-1x"></div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="payment-calculator">
+                                <div class="payment-get"><label for="paymentGet">{% trans "Rate per coin" %}</label>
+                                    <div class="payment-input">
+                                    <div class='input-bordered'>
+                                    {{offer.rate_per_coin|floatformat:'-3'}}
+                                    </div><span class="payment-get-cur payment-cal-cur">USD</span>
+                                    </div>
+                                </div><em class="ti ti-exchange-vertical"></em>
+                                <div class="payment-from"><label for="amount">{% trans "Amount" %}</label>
+                                    <div class="payment-input">{{form.amount}}<span class="payment-from-cur payment-cal-cur">{{offer.coin}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gaps-2x d-md-none"></div>
+                        </div><!-- .col -->
+                        <div class="col-md-4">
+                            <div class="payment-bonus">
+                                <h6 class="payment-bonus-title">Current Bonus</h6><span class="payment-bonus-amount">20%
+                                    <span>on pre-sales</span></span><span class="payment-bonus-time">End at -
+                                    09 Jul, 2018</span>
+                            </div>
+                            <div class="gaps-1x d-md-none"></div>
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                    <div class="gaps-1x"></div>
+                    <div class="payment-calculator-note"><i class="fas fa-info-circle"></i>The calculator helps
+                        you to convert required currency to ICOX tokens.</div>
+                    <div class="gaps-3x"></div>
+                    </div><!-- .payment-summary -->
+                    <button type="submit" class="btn btn-primary payment-btn">Purchase {{offer.coin}}</button>
+                </form><!-- form --><!-- form -->
+            </div><!-- .tab-pane -->
+        </div><!-- .tab-content -->
+    </div><!-- .user-panel -->
+</div><!-- .user-content -->
+{% endblock content %}

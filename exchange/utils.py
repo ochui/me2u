@@ -17,3 +17,11 @@ def unique_order_id_generator(instance):
     if qs_exists:
         return unique_order_id_generator(instance)
     return order_new_id
+
+def unique_trade_id_generator(instance):
+    trade_new_id = random_string_generator()
+    Klass = instance.__class__
+    qs_exists = Klass.objects.filter(trade_uid=trade_new_id).exists()
+    if qs_exists:
+        return unique_order_id_generator(instance)
+    return trade_new_id

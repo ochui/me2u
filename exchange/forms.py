@@ -7,7 +7,8 @@ from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 from django_countries import countries
-from exchange.models import Offer
+from exchange.models import Offer, Trade
+
 
 class OfferCreationForm(forms.ModelForm):
     class Meta:
@@ -48,3 +49,23 @@ class OfferCreationForm(forms.ModelForm):
         }
 
 
+class TradeCreationForm(forms.ModelForm):
+
+    class Meta:
+        model = Trade
+        fields = (
+            'payment_channel', 'amount'
+        )
+
+        context_object_name = 'form'
+
+        widgets = {
+            'amount': forms.NumberInput(
+                attrs={
+                    'class': 'input-bordered',
+                }
+            ),
+            'payment_channel': forms.RadioSelect(
+                
+            )
+        }
