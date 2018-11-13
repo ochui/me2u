@@ -4,6 +4,7 @@
 #  * file that was distributed with this source code.
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import OfferCreationForm, TradeCreationForm
 from exchange.models import Offer, Trade
@@ -74,8 +75,30 @@ class TradeCreateView(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
 
-class TradeListView(ListView):
+class TradeListView(LoginRequiredMixin, ListView):
 
     model = Trade
     template_name = "dashboard/list_trade.html"
     context_object_name = 'trades'
+
+
+class TradeDetailView(LoginRequiredMixin, DetailView):
+    model = Trade
+    template_name = "dashboard/trade_details.html"
+
+    def get_object(self, queryset=None):
+        """
+        Return the object the view is displaying.
+        """
+        if queryset is None:
+            queryset = self.get_queryset()
+
+        queryset = queryset.filter(trade_uid=self.kwargs['trade_id'])
+        
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404(_("No %(verbose_name)s found matching the query") %
+                        {'verbose_name': queryset.model._meta.verbose_name})
+        return obj

@@ -32,8 +32,8 @@
                     <th class="refferal-name"><span>{% trans "Trade" %}</span></th>
                     <th class="refferal-tokens"><span>{% trans "Offer" %}</span></th>
                     <th class="refferal-bonus"><span>{% trans "Currency" %}</span></th>
-                    <th class="refferal-date"><span>Created</span></th>
-                    <th class="refferal-channel"><span>Expires</span></th>
+                    <th class="refferal-date"><span>{% trans "Status" %}</span></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -42,8 +42,8 @@
                     <td class="refferal-name">{{trade.trade_uid}}</td>
                     <td class="refferal-tokens"><a href="{% url 'offer_details' trade.offer.offer_id %}">{{trade.offer.offer_id}}</a></td>
                     <td class="refferal-bonus">{{trade.offer.coin}}</td>
-                    <td class="refferal-date">{{trade.created_at}}</td>
-                    <td class="refferal-channel">08-02-2018</td>
+                    <td class="refferal-date">{{trade.status}}</td>
+                    <td><a href="{% url 'user_trade_details' trade.trade_uid %}">view</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

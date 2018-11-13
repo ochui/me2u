@@ -9,5 +9,6 @@ urlpatterns = [
     path('offer', views.OfferListView.as_view(), name="user_offer_list"),
     path('offer/create', views.OfferCreateView.as_view(), name='user_create_offer'),
     path("trade", views.TradeListView.as_view(), name="user_trade_list"),
+    path("trade/<trade_id>", views.TradeDetailView.as_view(), name="user_trade_details"),
     path('trade/create/<offer_id>', views.TradeCreateView.as_view(), name="user_create_trade")
 ]
